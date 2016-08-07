@@ -3,7 +3,7 @@
 
         <!-- Este bloque al principio funcionaba. Al añadir más cosas empezó
              a petar diciendo que el campo tipo no existe, pero ESTÁ EN LA
-             BASE DE DATOS, puede verse en el modelo mediante la interfaz. 
+             BASE DE DATOS, puede verse en el modelo mediante la interfaz.
         <record id="jelos_phone_call_view" model="ir.ui.view">
             <field name="name">crm.calls.form.jelos</field>
             <field name="model">crm.phonecall</field>
@@ -26,6 +26,13 @@
               </xpath>
             </field>
         </record>
+
+        <menuitem name="Llamadas planificadas"
+          id="crm.menu_crm_case_phone_outbound"
+          parent="crm.menu_crm_case_phone"
+          groups="base.group_user"/>
+
+
 
 
 
