@@ -28,18 +28,18 @@
     ],
     "website": "http://www.bisnesmart.com",
     "depends": [
-        "account",
-        "product",
         "base",
-        "sale",
+        "project",
+        "project_cleaning",
     ],
     "data": [
         "views/project/report_saleorder_bisnesmart.xml",
         "views/project/report_saleorder_bisnesmart_document.xml",
+        "views/project_job_line.xml",
 
 
     ],
     "installable": True,
     "application": True,
-    "active": True,
+    # "active": True,
 }

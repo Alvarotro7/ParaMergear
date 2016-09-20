@@ -19,5 +19,5 @@
 from openerp import models, fields, api
 
 
-class report_project_line(models.Model):
+class report_project_job_line(models.Model):
 	_inherit = "project.job.line"

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="project_job_line_report_tree" model="ir.ui.view">
+      <field name="name">project.job.line.report.tree</field>
+      <field name="model">project.job.line</field>
+      <field name="arch" type="xml">
+        <tree string="Planning">
+          <field name="name" />
+          <field name="employee_id" />
+          <field name="analytic_account_id" />
+          <field name="week_ids" />
+          <field name="job_type_id" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="project_job_line_search" model="ir.ui.view">
+    <field name="name">project.job.line.search</field>
+    <field name="model">project.job.line</field>
+    <field name="arch" type="xml">
+        <search string="Planning">
+          <field name="name" />
+          <field name="employee_id" />
+          <field name="analytic_account_id" />
+          <field name="week_ids" />
+          <field name="job_type_id" />
+            <group expand="0" string="Filters">
+              <filter string="Activos"  domain="[('is_activo','=',True)]" />
+            </group>
+            <group expand="0" string="Group By">
+                <filter string="Empleado" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                <filter string="Tipo de trabajo" icon="terp-folder-green" domain="[]" context="{'group_by':'job_type_id'}"/>
+                <filter string="Contrato" icon="terp-folder-green" domain="[]" context="{'group_by':'analytic_account_id'}"/>
+                <!-- <separator/>
+                <filter string="By Month" icon="terp-go-month" domain="[]" context="{'group_by':'date'}" help="Hours by Month"/> -->
+            </group>
+          </search>
+    </field>
+    </record>
+
+    <record id="open_planning" model="ir.actions.act_window">
+    <field name="name">Planning</field>
+    <field name="res_model">project.job.line</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="project_job_line_report_tree"/>
+    <field name="search_view_id" ref="project_job_line_search" />
+</record>
+<menuitem id="job_line_menu"
+          name="Job lines"
+          parent="hr.menu_hr_main"
+          sequence="4"
+          action="open_planning" />
+
+
+  </data>
+</openerp>
