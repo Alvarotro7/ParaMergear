@@ -33,8 +33,8 @@
         "project_cleaning",
     ],
     "data": [
-        "views/project/report_saleorder_bisnesmart.xml",
-        "views/project/report_saleorder_bisnesmart_document.xml",
+        "views/project/report_jobline_bisnesmart.xml",
+        #"views/project/report_jobline_bisnesmart_document.xml",
         "views/project_job_line.xml",
 
 
