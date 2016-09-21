@@ -11,13 +11,122 @@
 
   <template id="report_jobline_bisnesmart_template">
   	<t t-call="report.html_container">
-  	  <t t-foreach="doc_ids" t-as="doc_id">
-  	      <!-- <t t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'jelos_reports.report_jobline_bisnesmart_document')"/> -->
-          <t	t-call="report.external_layout">
-								<div	class="page">
-										<!--	Report	page	content	-->
-								</div>
-					</t>
+      <t	t-call="report.external_layout">
+        <div	class="page">
+            <!--	Report	page	content	-->
+            <!-- Agrupando por empleado -->
+            <!-- Se define la variable fuera del foreach para que
+                 siga disponible -->
+            <t t-set="empleado" t-value="[]"/>
+
+            <t t-foreach="docs" t-as="o">
+                <t t-foreach="o.employee_id" t-as="l">
+                    <t t-set="empleado" t-value="empleado+[l]"/>
+                </t>
+            </t>
+            <!--
+                En la variable "empleado" tenemos agrupadas las líneas de un
+                mismo trabajador.
+            -->
+                <t t-foreach="set(empleado)" t-as="employee">
+
+                  <table style="page-break-after:always;" class="table table-bordered">
+                    <tr>
+                      <th>
+                        <div><strong t-esc="employee.name"/></div>
+                      </th>
+                    </tr>
+                    <tr>
+                      <!-- <th>Linea employee_id</th>
+                      <th>Employee.id</th> -->
+                      <th>Ruta</th>
+                      <th>L</th>
+                      <th>M</th>
+                      <th>X</th>
+                      <th>J</th>
+                      <th>V</th>
+                      <th>S</th>
+                      <th>Observaciones</th>
+                    </tr>
+                    <t t-foreach="docs" t-as="linea">
+                      <t t-if="employee.id==linea.employee_id.id">
+                        <tr t-if="linea.is_activo">
+                          <!-- debug -->
+                          <!-- <td>
+                            <span t-field="linea.employee_id.id" />
+                          </td>
+                          <td>
+                            <span t-field="employee.id" />
+                          </td> -->
+                          <!-- /debug -->
+                          <td>
+                            <div><span t-field="linea.analytic_account_id"/></div>
+                          </td>
+                          <!-- Week days -->
+                          <td>
+                            <!-- ver trabajos del dia lunes -->
+                            <!-- Meter un foreach y comparar solo el que interesa-->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==1">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+                          </td>
+                          <td>
+                            <!-- ver trabajos del dia martes -->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==2">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+
+                          </td>
+                          <td>
+                            <!-- ver trabajos del dia X -->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==3">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+                          </td>
+                          <td>
+                            <!-- ver trabajos del dia jueves -->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==4">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+                          </td>
+                          <td>
+                            <!-- ver trabajos del dia viernes -->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==5">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+                          </td>
+                          <td>
+                            <!-- ver trabajos del dia S -->
+                            <t t-foreach="linea.week_ids" t-as="dia">
+                              <t t-if="dia.week==6">
+                                <span t-field="linea.job_type_id"/>
+                              </t>
+                            </t>
+                          </td>
+                          <!-- End Week days -->
+                          <td>
+                            <span t-field="linea.notes" />
+                          </td>
+                        </tr>
+                      </t>
+                    </t>
+                  </table>
+                </t>
+              </div> <!-- Page -->
+
+    	            <!-- <t t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'jelos_reports.report_jobline_bisnesmart_document')"/> -->
+
+
   	  </t>
     </t>
    </template>
