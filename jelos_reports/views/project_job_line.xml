@@ -5,7 +5,7 @@
       <field name="name">project.job.line.report.tree</field>
       <field name="model">project.job.line</field>
       <field name="arch" type="xml">
-        <tree string="Planning">
+        <tree string="Planning" default_order="analytic_account_id, employee_id">
           <field name="name" />
           <field name="employee_id" />
           <field name="analytic_account_id" />
