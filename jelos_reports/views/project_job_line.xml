@@ -26,7 +26,8 @@
           <field name="week_ids" />
           <field name="job_type_id" />
             <group expand="0" string="Filters">
-              <filter string="Activos"  domain="[('is_activo','=',True)]" />
+              <filter name="trabajos_activos" string="Activos"  domain="[('is_activo','=',True)]" />
+              <filter name="empleados_activos" string="Empleados activos"  domain="[('employee_id.active','=',True)]" />
             </group>
             <group expand="0" string="Group By">
                 <filter string="Empleado" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
@@ -45,7 +46,8 @@
     <field name="view_mode">tree,form</field>
     <field name="view_id" ref="project_job_line_report_tree"/>
     <field name="search_view_id" ref="project_job_line_search" />
-</record>
+    <field name="context">{'search_default_empleados_activos':True}</field>
+    </record>
 <menuitem id="job_line_menu"
           name="Job lines"
           parent="hr.menu_hr_main"
