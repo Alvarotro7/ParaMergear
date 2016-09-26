@@ -9,6 +9,7 @@
           <field name="name" />
           <field name="employee_id" />
           <field name="analytic_account_id" />
+          <field name="horas_semana" />
           <field name="week_ids" />
           <field name="job_type_id" />
         </tree>
@@ -23,6 +24,7 @@
           <field name="name" />
           <field name="employee_id" />
           <field name="analytic_account_id" />
+          <field name="horas_semana" />
           <field name="week_ids" />
           <field name="job_type_id" />
             <group expand="0" string="Filters">
