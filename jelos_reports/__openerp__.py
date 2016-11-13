@@ -34,6 +34,8 @@
     ],
     "data": [
         "views/project/report_jobline_bisnesmart.xml",
+        "views/project/report_jobline_bisnesmart_time.xml",
+        "views/project/report_jobline_bisnesmart_garajes.xml",
         #"views/project/report_jobline_bisnesmart_document.xml",
         "views/project_job_line.xml",
 

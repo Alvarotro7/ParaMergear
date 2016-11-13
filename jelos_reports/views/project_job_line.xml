@@ -11,6 +11,7 @@
           <field name="analytic_account_id" />
           <field name="horas_semana" />
           <field name="week_ids" />
+          <field name="notes" />
           <field name="job_type_id" />
         </tree>
       </field>
@@ -28,8 +29,20 @@
           <field name="week_ids" />
           <field name="job_type_id" />
             <group expand="0" string="Filters">
-              <filter name="trabajos_activos" string="Activos"  domain="[('is_activo','=',True)]" />
+              <filter name="trabajos_activos" string="Activos"  domain="[['analytic_account_id.state', '!=', 'close']]" />
               <filter name="empleados_activos" string="Empleados activos"  domain="[('employee_id.active','=',True)]" />
+              <filter name="garajes_enero" string="Garajes Enero"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 1]]" />
+              <filter name="garajes_febrero" string="Garajes Febrero"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 2]]" />
+              <filter name="garajes_marzo" string="Garajes Marzo"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 3]]" />
+              <filter name="garajes_abril" string="Garajes Abril"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 4]]" />
+              <filter name="garajes_mayo" string="Garajes Mayo"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 5]]" />
+              <filter name="garajes_junio" string="Garajes Junio"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 6]]" />
+              <filter name="garajes_julio" string="Garajes Julio"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 7]]" />
+              <filter name="garajes_agosto" string="Garajes Agosto"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 8]]" />
+              <filter name="garajes_septiembre" string="Garajes Septiembre"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 9]]" />
+              <filter name="garajes_octubre" string="Garajes Octubre"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 10]]" />
+              <filter name="garajes_noviembre" string="Garajes Noviembre"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 11]]" />
+              <filter name="garajes_diciembre" string="Garajes Diciembre"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 12]]" />
             </group>
             <group expand="0" string="Group By">
                 <filter string="Empleado" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>

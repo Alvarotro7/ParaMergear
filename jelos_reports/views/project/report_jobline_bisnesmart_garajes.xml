@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+  <report
+  id="report_jobline_bisnesmart_garajes"
+  model="project.job.line"
+  string="Imprimir garajes."
+  name="jelos_reports.report_jobline_bisnesmart_template_garajes"
+  report_type="qweb-pdf" />
+
+  <template id="report_jobline_bisnesmart_template_garajes">
+  	<t t-call="report.html_container">
+      <t	t-call="report.external_layout">
+        <div	class="page">
+            <!--	Report	page	content	-->
+            <!-- Agrupando por empleado -->
+            <!-- Se define la variable fuera del foreach para que
+                 siga disponible -->
+
+            <!--
+                En la variable "mes" tenemos agrupadas las líneas de un
+                mismo mes.
+            -->
+
+                  <table style="page-break-after:always;" class="table table-bordered">
+                    <tr>
+                      <!-- <th>Linea employee_id</th>
+                      <th>Employee.id</th> -->
+                      <th>Ruta</th>
+                      <th>Observaciones</th>
+                    </tr>
+                    <t t-foreach="docs.sorted(key=lambda r: r.analytic_account_id.name)" t-as="linea">
+                        <tr>
+                          <!-- debug -->
+                          <!-- <td>
+                            <span t-field="linea.employee_id.id" />
+                          </td>
+                          <td>
+                            <span t-field="employee.id" />
+                          </td> -->
+                          <!-- /debug -->
+                          <td>
+                            <div><span t-field="linea.analytic_account_id"/></div>
+                          </td>
+                          <!-- End Week days -->
+                          <td>
+                            <span t-field="linea.notes" />
+                          </td>
+                        </tr>
+                    </t>
+                  </table>
+              </div> <!-- Page -->
+
+    	            <!-- <t t-raw="translate_doc(doc_id, doc_model, 'user_id.lang', 'jelos_reports.report_jobline_bisnesmart_document')"/> -->
+
+
+  	  </t>
+    </t>
+   </template>
+</data>
+</openerp>
