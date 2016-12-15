@@ -29,6 +29,7 @@
                       <th>Employee.id</th> -->
                       <th>Ruta</th>
                       <th>Observaciones</th>
+                      <th>Tiempo</th>
                     </tr>
                     <t t-foreach="docs.sorted(key=lambda r: r.analytic_account_id.name)" t-as="linea">
                         <tr>
@@ -47,6 +48,10 @@
                           <td>
                             <span t-field="linea.notes" />
                           </td>
+                          <td>
+                            <span t-field="linea.hours_task" />
+                          </td>
+
                         </tr>
                     </t>
                   </table>
