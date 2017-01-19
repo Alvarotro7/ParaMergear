@@ -29,6 +29,7 @@
           <field name="week_ids" />
           <field name="job_type_id" />
             <group expand="0" string="Filters">
+              <filter name="contratos_jelos_activos" string="Contratos Jelos Activos"  domain="[['analytic_account_id.state', '!=', 'close'],['analytic_account_id.state', '!=', 'cancelled']]"/>
               <filter name="trabajos_activos" string="Activos"  domain="[['analytic_account_id.state', '!=', 'close']]" />
               <filter name="empleados_activos" string="Empleados activos"  domain="[('employee_id.active','=',True)]" />
               <filter name="garajes_enero" string="Garajes Enero"  domain="[['project_id.state', '=', 'open'], ['job_type_id', '=', 3], ['month_ids', '=', 1]]" />

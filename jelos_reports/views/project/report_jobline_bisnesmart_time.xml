@@ -60,7 +60,7 @@
                     </tr>
                     <t t-foreach="docs.sorted(key=lambda r: r.analytic_account_id.name)" t-as="linea">
                       <t t-if="employee.id==linea.employee_id.id">
-                        <tr t-if="linea.is_activo">
+                        <tr>
                           <!-- debug -->
                           <!-- <td>
                             <span t-field="linea.employee_id.id" />
