@@ -14,8 +14,8 @@ personalizada para powerworks sin lineas y con el logo grande -->
                 <div t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;vat&quot;], &quot;no_marker&quot;: true}"/>
                 <span t-field="company.vat"/>
                 <ul class="list-inline">
-                  <li> <span>Tel: 963 11 76 88</span></li>
-                  <li><span>Avisos: 660 203 004</span></li>
+                  <li> <span>Tel: 963 953 257</span></li>
+                  <li><span>Fax: 963 444 127</span></li>
                 </ul>
             </div>
     			</div>
