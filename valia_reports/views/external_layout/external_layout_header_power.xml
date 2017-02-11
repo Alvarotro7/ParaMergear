@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<!-- Esta vista sobreescribe la vista de header que utilizan los informes de Odoo para meter la
+personalizada para powerworks sin lineas y con el logo grande -->
+<template id="report_header_power" inherit_id="report.external_layout_header">
+            <xpath expr="//div[@class='header']" position="replace">
+                <div class ="header">
+         <div class="row">
+     			 	<div class="col-xs-3">
+      			 		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 100px;"/>
+      			</div>
+            <div class="col-xs-5 pull-right">
+                <div t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;vat&quot;], &quot;no_marker&quot;: true}"/>
+                <span t-field="company.vat"/>
+                <ul class="list-inline">
+                  <li> <span>Tel: 963 953 257</span></li>
+                  <li><span>Fax: 963 444 127</span></li>
+                </ul>
+            </div>
+    			</div>
+                </div>
+            </xpath>
+ </template>
+</data>
+</openerp>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+  <template id="report_saleorder_ledyspa_document" inherit_id="sale.report_saleorder_document">
+  <xpath expr="//div[@class= 'page']" position="replace">
+  <t t-call="report.external_layout">
+
+    <div class="page" style="font-size:12px">
+      <div class="oe_structure"/>
+
+      <table class="table table-condensed">
+      <thead>
+        <tr>
+          <div class="col-xs-3 mb0" style="background:#000000">
+            <h3 style="font-weight: bold; font-style:italic; margin-top:0; margin-bottom:0; color:#FFFFFF;">
+              <span t-if="o.state not in ['draft','sent']">Pedido </span>
+              <span t-if="o.state in ['draft','sent']">Presupuesto </span>
+            </h3>
+          </div>
+        </tr>
+      </thead>
+      <tbody class="sale_tbody" style="border-top:   3px solid;">
+          <td>
+            <div name="partner_header" class="col-xs-6 pull-right" style="background:#D8D8D8;">
+              <table style="width:100%">
+
+                <tr>
+                  <td>
+                  <span style="font-weight: bold;">Cliente:</span>
+                   <div t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
+                    <span t-if="o.partner_id.vat">CIF/NIF: <span t-field="o.partner_id.vat"/></span>
+                  </td>
+                </tr>
+                  <div t-if="o.partner_shipping_id != o.partner_id">
+                <tr>
+                 <td >
+                    <span style="font-weight: bold;">Dirección de envío:</span>
+                  </td >
+                </tr>
+                  <tr>
+                    <td >
+                    <span t-field="o.partner_shipping_id.name"/>
+                  </td >
+                </tr>
+                  <tr>
+                    <td >
+                    <div t-field="o.partner_shipping_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                  </td >
+                  </tr>
+                  <tr >
+                    <td >
+                     <span t-field="o.partner_shipping_id.mobile"  />
+                     <span t-if="o.partner_shipping_id.email"> </span>
+                     <span t-field="o.partner_shipping_id.email"  />
+                    </td>
+                  </tr>
+                  <tr >
+                    <td >
+                     <span t-field="o.partner_shipping_id.phone"  />
+                    </td>
+                  </tr>
+                </div>
+              </table>
+            </div>
+            <div class="col-xs-6">
+
+            <table class="table table-condensed mb0">
+                <thead>
+                  <tr>
+                    <th t-if="o.state not in ['draft','sent']">Num Pedido </th>
+                    <th t-if="o.state in ['draft','sent']">Num Presupuesto </th>
+                    <th t-if="o.state not in ['draft','sent']">Fecha Pedido </th>
+                    <th t-if="o.state in ['draft','sent']">Fecha Presupuesto </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+
+                    <td>
+                      <span t-field="o.name"/>
+                    </td>
+
+                    <td>
+                      <span t-field="o.date_order" t-field-options='{"widget": "date"}'/>
+                    </td>
+
+                  </tr>
+                </tbody>
+              </table>
+
+            <table class="table table-condensed mb0">
+                <thead>
+                  <tr>
+                    <th >Técnico comercial</th>
+                    <th >Email</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td >
+                    <span t-field="o.user_id.name"/>
+                    </td>
+
+                    <td >
+                    <span>comercial@valiamedioambiental.com</span>
+                    </td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-condensed mb0">
+                <thead>
+                  <tr>
+                    <th >Referencia</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <td >
+                    <span ><span t-field="o.client_order_ref"/></span>
+                    </td>
+                </tbody>
+            </table>
+
+
+              </div>
+
+          </td>
+      </tbody>
+       </table>
+
+
+
+    <div class="row">
+
+    </div>
+
+
+      <table class="table table-condensed">
+        <thead >
+          <tr>
+            <td class="text-left" style="font-weight: bold;">Descripción</td>
+            <td class="text-left" style="font-weight: bold;">Cantidad</td>
+            <td  class="text-left" style="font-weight: bold;">Precio</td>
+            <td  class="text-left" style="font-weight: bold;" groups="sale.group_discount_per_so_line">Dto%</td>
+            <td  class="text-left;" style="font-weight: bold;">Importe</td>
+          </tr>
+        </thead>
+        <tbody style="border-top: #000000 3px solid;">
+          <tr t-foreach="o.order_line" t-as="l">
+
+            <td t-if="l.product_id.id in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.name"/>
+            </td>
+
+
+            <td class="text-left" t-if="l.product_id.id not in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.name"/>
+            </td>
+
+            <td class="text-left" t-if="l.product_id.id not in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.product_uom_qty"/>
+            </td>
+
+
+            <td class="text-left" t-if="l.product_id.id not in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.price_unit"/>
+            </td>
+
+
+            <td groups="sale.group_discount_per_so_line" t-if="l.product_id.id not in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.discount"/>
+            </td>
+
+
+            <td class="text-left" t-if="l.product_id.id not in [388,584,667,764,565,495,508,537]">
+              <span t-field="l.price_subtotal" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+
+
+      <div class="mt128">
+        <div class="row">
+
+            <div>
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                        <th>Impuestos</th>
+                        <th class="text-right">Base</th>
+                        <th class="text-right">Cuota</th>
+                    </tr>
+                    </thead>
+                    <tbody style="border-top: #000000 3px solid;">
+
+                      <tr t-foreach="o.taxes" t-as="t">
+                          <t t-if="t.sequence != -1 and t.sequence != -2 and t.sequence != -3 and t.sequence != -4">
+                            <td class="text-left">
+                                <span t-field="t.name"/>
+                            </td>
+                            <td class="text-right">
+                                <span  t-field="t.base"/> <span>€</span>
+                            </td>
+                            <td class="text-right">
+                                <span t-field="t.amount"/> <span>€</span>
+                            </td>
+                          </t>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      <td  class="text-right"  style="font-weight: bold;"><span style="font-weight: bold;">TOTAL: </span> <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.pricelist_id.currency_id&quot;}"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div t-if="o.note">
+          <p><strong>Observaciones:</strong><p t-field="o.note"/></p>
+        </div>
+
+
+      <div t-if="o.payment_term.note" class="col-xs-4 col-xs-push" style="background:#D8D8D8;">
+        <table>
+        <tr class="border-black">
+        <span t-if="o.payment_term.note or o.payment_mode_id">
+        <strong>Condiciones de pago:</strong>
+        <span t-field="o.payment_term.note"/>
+        <span t-field="o.payment_mode_id"/>
+      </span>
+      </tr>
+      </table>
+
+      </div>
+
+
+      </div>
+
+      </div>
+
+      </t>
+      </xpath>
+      </template>
+      </data>
+      </openerp>
