@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+      <record id="view_employe_for_jelos_bisnes" model="ir.ui.view">
+             <field name="model">hr.employee</field>
+             <field name="inherit_id" ref="hr.view_employee_form"/>
+             <field name="arch" type="xml">
+               <!--Ocultar los campos con replace-->
+                 <xpath expr="//page[@string='Public Information']//field[@name='work_location']"
+                        position="replace">
+                 </xpath>
+                 <xpath expr="//page[@string='Personal Information']//field[@name='identification_id']"
+                        position="replace">
+                 </xpath>
+                 <xpath expr="//page[@string='Personal Information']//field[@name='bank_account_id']"
+                        position="replace">
+                 </xpath>
+                 <xpath expr="//page[@string='Personal Information']//field[@name='passport_id']"
+                        position="attributes">
+                        <attribute name="invisible">True</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Personal Information']//field[@name='otherid']"
+                        position="after">
+                        <field name="poblacion"/>
+                        <field name="provincia"/>
+                        <field name="telefono_fijo"/>
+                        <field name="movil"/>
+                        <field name="email_empleado"/>
+                 </xpath>
+                 <xpath expr="//page[@string='Public Information']//field[@name='parent_id']"
+                        position="attributes">
+                        <attribute name="invisible">True</attribute>
+                 </xpath>
+                 <xpath expr="//page[@string='Public Information']//field[@name='address_id']"
+                        position="attributes">
+                        <attribute name="invisible">True</attribute>
+                 </xpath>
+
+                 <xpath expr="//page[@string='Public Information']//field[@name='coach_id']"
+                        position="attributes">
+                        <attribute name="invisible">True</attribute>
+                 </xpath>
+                 <!--Posicionar los campos-->
+                 <xpath expr="//page[@string='Public Information']//field[@name='address_id']"
+                        position="before">
+                        <field name="identification_id" string="NIF/NIE"/>
+                 </xpath>
+                 <xpath expr="//page[@string='Public Information']//field[@name='mobile_phone']"
+                        position="before">
+                        <field name="bank_account_id"/>
+                 </xpath>
+             </field>
+         </record>
+
+         <record id="view_hr_employee_property_form_bisnes" model="ir.ui.view">
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="jelos.view_hr_employee_property_form"/>
+                <field name="arch" type="xml">
+                  <!--Ocultar los campos con replace-->
+                    <xpath expr="//page[@string='Personal Information']//field[@name='num_ss']"
+                           position="replace">
+                    </xpath>
+                    <!--Posicionar los campos-->
+                    <xpath expr="//page[@string='Public Information']//field[@name='address_id']"
+                           position="before">
+                           <field name="num_ss"/>
+                    </xpath>
+                </field>
+            </record>
+
+            <record id="hr_hr_employee_view_form2_bisnes" model="ir.ui.view">
+                   <field name="model">hr.employee</field>
+                   <field name="inherit_id" ref="hr_contract.hr_hr_employee_view_form2"/>
+                   <field name="arch" type="xml">
+                     <!--Ocultar los campos con replace-->
+                       <xpath expr="//field[@name='manager']"
+                              position="attributes">
+                              <attribute name="invisible">True</attribute>
+                       </xpath>
+
+                   </field>
+            </record>
+
+    </data>
+</openerp>
