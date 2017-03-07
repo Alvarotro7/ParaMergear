@@ -18,7 +18,8 @@
     "website": "http://www.odoomrp.com",
     "summary": "Formacion",
     "data": [
-        "views/employee_formacion.xml"
+        "views/employee_formacion.xml",
+        'security/ir.model.access.csv',
     ],
     "installable": True,
 }

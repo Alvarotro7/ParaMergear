@@ -19,7 +19,8 @@
     "summary": "Copy bom",
     "data": [
         "views/employe.xml",
-        "views/employee_tallas.xml"
+        "views/employee_tallas.xml",
+        'security/ir.model.access.csv',
     ],
     "installable": True,
 }

@@ -14,36 +14,45 @@ _logger = logging.getLogger(__name__)
 class he_employee(models.Model):
     _inherit = "hr.employee"
 
+    street = fields.Char(
+        related="address_home_id.name",
+        string="Domicilio",
+        store=True
+    )
+
+    street2 = fields.Char(
+        related="address_home_id.street",
+        string="Domicilio2",
+        store=True
+    )
+
+
     poblacion = fields.Char(
         related="address_home_id.city",
         string="Población",
-        store=True,
-        readonly=True
+        store=True
     )
 
     provincia = fields.Many2one(
         related="address_home_id.state_id",
+        #'res.country.state',
         string="Provincia",
-        store=True,
-        readonly=True
+        store=True
     )
     telefono_fijo = fields.Char(
         related="address_home_id.phone",
         string="Telf Fijo",
-        store=True,
-        readonly=True
+        store=True
     )
     movil = fields.Char(
         related="address_home_id.mobile",
         string="Telf movil",
-        store=True,
-        readonly=True
+        store=True
     )
     email_empleado = fields.Char(
         related="address_home_id.email",
         string="Email",
-        store=True,
-        readonly=True
+        store=True
     )
 
     calzado = fields.Many2one('hr.employee.tallas', 'name')

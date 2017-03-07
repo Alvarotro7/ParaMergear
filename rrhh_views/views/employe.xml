@@ -20,9 +20,15 @@
                         position="attributes">
                         <attribute name="invisible">True</attribute>
                  </xpath>
+                 <xpath expr="//page[@string='Personal Information']//field[@name='address_home_id']"
+                        position="attributes">
+                        <attribute name="invisible">True</attribute>
+                 </xpath>
 
-                 <xpath expr="//page[@string='Personal Information']//field[@name='otherid']"
+                 <xpath expr="//page[@string='Personal Information']//field[@name='address_home_id']"
                         position="after">
+                        <field name="street"/>
+                        <field name="street2"/>
                         <field name="poblacion"/>
                         <field name="provincia"/>
                         <field name="telefono_fijo"/>

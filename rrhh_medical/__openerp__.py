@@ -18,7 +18,8 @@
     "website": "http://www.odoomrp.com",
     "summary": "Medica",
     "data": [
-        "views/employee_medical.xml"
+        "views/employee_medical.xml",
+        'security/ir.model.access.csv',
     ],
     "installable": True,
 }
