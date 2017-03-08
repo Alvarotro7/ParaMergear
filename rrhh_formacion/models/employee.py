@@ -15,9 +15,24 @@ class he_employee(models.Model):
 
     formaciones_count = fields.Integer(compute='_formaciones_count', string='# formaciones')
     formacion_ids = fields.One2many('hr.employee.formacion', 'employee_id', 'Formaciones empleado')
+    albaranes_count = fields.Integer(compute='_albaranes_count', string='# albaranes')
+    albaran_ids = fields.One2many('stock.picking', 'partner_id', 'Albaranes empleado')
+    partner_id = fields.One2many(compute='_partner')
 
     @api.one
     @api.depends('formacion_ids')
     def _formaciones_count(self):
         formaciones = self.env['hr.employee.formacion'].search([('employee_id', '=', self.id)])
         self.formaciones_count = len(formaciones)
+
+    @api.one
+    @api.depends('albaran_ids')
+    def _albaranes_count(self):
+        albaranes = self.env['stock.picking'].search([('partner_id', '=', self.user_id.partner_id.id)])
+        self.albaranes_count = len(albaranes)
+
+    @api.one
+    @api.depends('partner_id')
+    def _partner(self):
+        partner = self.env['res.partner'].search([('partner_id', '=', self.user_id.partner_id.id)])
+        self.partner

@@ -26,6 +26,13 @@ class he_employee(models.Model):
         store=True
     )
 
+    cp_empleado = fields.Char(
+        related="address_home_id.zip",
+        string="C.P:",
+        store=True
+    )
+
+
 
     poblacion = fields.Char(
         related="address_home_id.city",
