@@ -28,10 +28,9 @@ class he_employee(models.Model):
 
     cp_empleado = fields.Char(
         #related="address_home_id.zip",
-        string="C.P:",
+        string="C.P.",
         store=True
     )
-
 
 
     poblacion = fields.Char(
@@ -48,12 +47,12 @@ class he_employee(models.Model):
     )
     telefono_fijo = fields.Char(
         #related="address_home_id.phone",
-        string="Telf Fijo",
+        string="Teléfono",
         store=True
     )
     movil = fields.Char(
         #related="address_home_id.mobile",
-        string="Telf movil",
+        string="Móvil",
         store=True
     )
     email_empleado = fields.Char(
@@ -67,6 +66,13 @@ class he_employee(models.Model):
     camiseta = fields.Many2one('hr.employee.tallas', 'name')
     chaqueta = fields.Many2one('hr.employee.tallas', 'name')
     bata = fields.Many2one('hr.employee.tallas', 'name')
+
+
+    horario_empleado = fields.Many2one(
+        'resource.calendar',
+        string="Horario",
+        store=True
+    )
 
 
     # contract_id = fields.One2many(

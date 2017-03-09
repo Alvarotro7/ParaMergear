@@ -79,7 +79,7 @@
                       name="%(revision_medical_tree)d"
                       context="{'search_default_employee_id': id}"
                       icon="fa-medkit">
-                      <field string="Revisiones" name="medical_count" widget="statinfo"/>
+                      <field string="Revisiones médicas" name="medical_count" widget="statinfo"/>
                     </button>
                   </xpath>
                 </field>

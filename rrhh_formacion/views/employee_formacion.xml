@@ -91,7 +91,7 @@
                        name="%(revision_formacion_tree)d"
                         context="{'search_default_employee_id': id}"
                       icon="fa-file-text">
-                      <field string="Formaciones" name="formaciones_count" widget="statinfo"/>
+                      <field string="Formación" name="formaciones_count" widget="statinfo"/>
                     </button>
                   </xpath>
                 </field>
@@ -141,7 +141,7 @@
                           name="%(stock.action_picking_tree_all)d"
                           context="{'search_default_partner_id': partner_id}"
                          icon="fa-warning">
-                         <field string="Albaranes" name="albaranes_count" widget="statinfo"/>
+                         <field string="Entrega EPI's" name="albaranes_count" widget="statinfo"/>
                        </button>
                      </xpath>
                    </field>
