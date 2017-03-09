@@ -30,6 +30,7 @@
                         <field name="street"/>
                         <field name="street2"/>
                         <field name="poblacion"/>
+                        <field name="cp_empleado"/>
                         <field name="provincia"/>
                         <field name="telefono_fijo"/>
                         <field name="movil"/>

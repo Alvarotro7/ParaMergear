@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Copiar bom",
+    "name": "Modificar vistas emleado",
     "version": "8.0.0.1",
     "depends": [
         "hr",
