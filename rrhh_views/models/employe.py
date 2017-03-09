@@ -15,19 +15,19 @@ class he_employee(models.Model):
     _inherit = "hr.employee"
 
     street = fields.Char(
-        related="address_home_id.name",
+        #related="address_home_id.name",
         string="Domicilio",
         store=True
     )
 
     street2 = fields.Char(
-        related="address_home_id.street",
+        #related="address_home_id.street",
         string="Domicilio2",
         store=True
     )
 
     cp_empleado = fields.Char(
-        related="address_home_id.zip",
+        #related="address_home_id.zip",
         string="C.P:",
         store=True
     )
@@ -35,29 +35,29 @@ class he_employee(models.Model):
 
 
     poblacion = fields.Char(
-        related="address_home_id.city",
+        #related="address_home_id.city",
         string="Población",
         store=True
     )
 
     provincia = fields.Many2one(
-        related="address_home_id.state_id",
-        #'res.country.state',
+        #related="address_home_id.state_id",
+        'res.country.state',
         string="Provincia",
         store=True
     )
     telefono_fijo = fields.Char(
-        related="address_home_id.phone",
+        #related="address_home_id.phone",
         string="Telf Fijo",
         store=True
     )
     movil = fields.Char(
-        related="address_home_id.mobile",
+        #related="address_home_id.mobile",
         string="Telf movil",
         store=True
     )
     email_empleado = fields.Char(
-        related="address_home_id.email",
+        #related="address_home_id.email",
         string="Email",
         store=True
     )
