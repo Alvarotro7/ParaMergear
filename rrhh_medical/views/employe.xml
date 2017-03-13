@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+      <record id="view_employe_for_jelos_bisnes" model="ir.ui.view">
+             <field name="model">hr.employee</field>
+             <field name="inherit_id" ref="hr.view_employee_form"/>
+             <field name="arch" type="xml">
+               <!--Ocultar los campos con replace-->
+
+             </field>
+         </record>
+
+         <record id="view_hr_employee_property_form_bisnes" model="ir.ui.view">
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="jelos.view_hr_employee_property_form"/>
+                <field name="arch" type="xml">
+                  <!--Ocultar los campos con replace-->
+                    <xpath expr="//page[@string='Personal Information']//field[@name='num_ss']"
+                           position="replace">
+                    </xpath>
+                </field>
+            </record>
+
+
+
+    </data>
+</openerp>

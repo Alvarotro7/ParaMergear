@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+      <record id="view_employe_medical_bisnes" model="ir.ui.view">
+             <field name="name">hr.medical.view.form</field>
+             <field name="model">hr.employee.medical</field>
+             <field name="arch" type="xml">
+               <form string="Revisión médica">
+                 <sheet>
+                   <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="Referencia revisión"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                      <page string="Informacion" name="informacion">
+                        <group>
+                          <field name="employee_id" string="Empleado"/>
+                          <field name="fichero"/>
+                          <field name="fecha_revision"/>
+                          <field name="fecha_validez"/>
+                          <field name="observaciones"/>
+                        </group>
+                      </page>
+                    </notebook>
+                  </sheet>
+                </form>
+             </field>
+         </record>
+
+         <record id="view_employe_medical_bisnes_search" model="ir.ui.view">
+         <field name="name">hr.employee.medical.search</field>
+         <field name="model">hr.employee.medical</field>
+         <field name="arch" type="xml">
+             <search string="Revisiones">
+               <field name="employee_id" />
+                 <group expand="0" string="Group By">
+                     <filter string="Empleado" icon="terp-personal" domain="[]" context="{'group_by':'employee_id'}"/>
+                     <!-- <separator/>
+                     <filter string="By Month" icon="terp-go-month" domain="[]" context="{'group_by':'date'}" help="Hours by Month"/> -->
+                 </group>
+               </search>
+         </field>
+         </record>
+
+         <record id="open_view_medical_form" model="ir.actions.act_window">
+           <field name="name">Revisiones médicas</field>
+           <field name="res_model">hr.employee.medical</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form</field>
+         </record>
+
+         <menuitem action="open_view_medical_form" id="menu_view_employee_medical_form"
+         parent="hr.menu_hr_main" sequence="50" groups="base.group_no_one"/>
+
+         <record model="ir.actions.act_window" id="revision_medical_tree">
+           <field name="name">Revisiones Médicas</field>
+           <field name="res_model">hr.employee.medical</field>
+           <field name="view_type">form</field>
+           <field name="view_mode">tree,form,graph</field>
+           <field name="arch" type="xml">
+               <tree string="Revisiones">
+                   <field name="name" string="Referencia"/>
+                   <field name="fecha_revision" string="Fecha revisión"/>
+                   <field name="fecha_validez" string="Fecha Validez"/>
+               </tree>
+           </field>
+       </record>
+
+         <record id="view_employe_for_medical_smart_bisnes" model="ir.ui.view">
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="hr.view_employee_form"/>
+                <field name="arch" type="xml">
+                  <xpath expr="//div[@name='button_box']" position="inside">
+                    <button class="oe_inline oe_stat_button"
+                      type="action"
+                      name="%(revision_medical_tree)d"
+                      context="{'search_default_employee_id': id}"
+                      icon="fa-medkit">
+                      <field string="Revisiones médicas" name="medical_count" widget="statinfo"/>
+                    </button>
+                  </xpath>
+                </field>
+            </record>
+
+
+
+    </data>
+</openerp>

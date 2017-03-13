@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+            <record id="view_employe_for_jelos_tallas_bisnes" model="ir.ui.view">
+                   <field name="model">hr.employee</field>
+                   <field name="inherit_id" ref="hr.view_employee_form"/>
+                   <field name="arch" type="xml">
+                     <!--Ocultar los campos con replace-->
+                       <xpath expr="//page[@string='HR Settings']"
+                              position="after">
+                              <page string="Ropa Laboral">
+                                <group string="Tallas de ropa">
+                                <field name="calzado" string="Nº Calzado"/>
+                                <field name="pantalon" string="T. Pantalón"/>
+                                <field name="camiseta" string="T. Camiseta"/>
+                                <field name="chaqueta" string="T. Chaqueta"/>
+                                <field name="bata" string="T. Bata"/>
+                              </group>
+                              </page>
+                       </xpath>
+
+                   </field>
+               </record>
+
+               <record id="open_view_tallas_form" model="ir.actions.act_window">
+                 <field name="name">Tallas Ropa Laboral</field>
+                 <field name="res_model">hr.employee.tallas</field>
+                 <field name="view_type">form</field>
+                 <field name="view_mode">tree,form</field>
+               </record>
+
+               <menuitem action="open_view_tallas_form" id="menu_view_employee_tallas_form"
+               parent="hr.menu_hr_configuration" sequence="1" groups="base.group_no_one"/>
+
+
+    </data>
+</openerp>
