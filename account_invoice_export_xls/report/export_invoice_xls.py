@@ -145,7 +145,7 @@ try:
                 'date_invoice': {
                     'header': [1, 13, 'text', _('Date')],
                     'lines': [1, 0, 'date', _render(
-                        "datetime.strptime(l['date_invoice'], '%d-%m-%Y')"),
+                        "datetime.strptime(l['date_invoice'], '%Y-%m-%d')"),
                         None,
                         self.aml_cell_style_date],
                     'totals': [1, 0, 'text', None],
@@ -153,7 +153,7 @@ try:
                 'move_date': {
                     'header': [1, 13, 'text', _('Account Move Date')],
                     'lines': [1, 0, 'date', _render(
-                        "datetime.strptime(l['move_date'], '%d-%m-%Y')"),
+                        "datetime.strptime(l['move_date'], '%Y-%m-%d')"),
                         None,
                         self.aml_cell_style_date],
                     'totals': [1, 0, 'text', None]
