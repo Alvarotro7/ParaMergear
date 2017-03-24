@@ -89,7 +89,7 @@ class AccountInvoiceExportReportXlsParser(report_sxw.rml_parse):
             "    AND inv.company_id=%s"
             "    AND inv.state in ('open', 'paid') "
             " {} "
-            " ORDER BY date_invoice ASC,invoice_number").format(additional_where)
+            " ORDER BY invoice_number ASC,invoice_number").format(additional_where)
 
         self.cr.execute(sql, (self.invoice_type, self.company_id))
         lines = self.cr.dictfetchall()
