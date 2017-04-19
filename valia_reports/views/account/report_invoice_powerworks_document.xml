@@ -179,16 +179,17 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Vencimiento:</th>
+                       <!--  <th>Vencimiento:</th> -->
                     </tr>
                 </thead>
                 <tbody style="border-top: #000000 3px solid;">
                     <tr>
 
                         <td>
-                          <p t-if="o.date_due">
+                          <p></p>
+                          <!-- <p t-if="o.date_due">
                               <span t-field="o.date_due"/>
-                          </p>
+                          </p> -->
                         </td>
                     </tr>
                 </tbody>
