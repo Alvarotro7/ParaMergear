@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record	id="jelos_issue" model="ir.ui.view">
+		<field	name="name">jelos.issue.view.employee</field>
+		<field	name="model">project.issue</field>
+		<field	name="inherit_id" ref="project_issue.project_issue_form_view"/>
+		<field	name="arch"	type="xml">
+			<xpath expr="//field[@name='user_id']" position="before">
+                   <field name="trabajador_id" context="{trabajador_id:trabajador_id}" />     
+            </xpath>
+		 </field>          
+        </record>
+
+        <record	id="jelos_issue_employee_search" model="ir.ui.view">
+		<field	name="name">jelos.issue.view.search.employee</field>
+		<field	name="model">project.issue</field>
+		<field	name="inherit_id" ref="project_issue.project_issue_form_view"/>
+		<field	name="arch"	type="xml">
+			<xpath expr="//field[@name='partner_id']">
+                 <filter string="Empleados" domain="[]" context="{'group_by':'trabajador_id'}"/>   
+            </xpath>
+		 </field>          
+        </record>
+    </data>
+</openerp>
